@@ -70,7 +70,7 @@
                                 <a type="button" href="{{ url('/student/edit/' . $student->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                         @endif
-                        @if (auth()->user()->role == 'admin')
+                         @if (auth()->user()->role == 'admin') 
                             <td><a type="button" href="{{ url('/student/delete/' . $student->id) }}"
                                     class="btn btn-primary btn-sm">Delete</a>
                             </td>

@@ -22,8 +22,7 @@ class Student extends Authenticatable
     // }
 
     protected $fillable = [
-    'role'.
-        'name',
+    'name',
     'father_name',
     'mobile',
     'email',

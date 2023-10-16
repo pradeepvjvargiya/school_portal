@@ -22,6 +22,10 @@ class CheckRole
             return $next($request);
         }
 
+        // if (auth()->user()->role == "admin")  {
+        //     return $next($request);
+        // }
+
         // If not authorized, you can redirect or return an error message
         return redirect()->back()->with('error', 'You are not authorized to edit this profile.');
     }

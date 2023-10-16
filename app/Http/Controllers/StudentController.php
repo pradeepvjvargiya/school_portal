@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+
 
 class StudentController extends Controller
 {
@@ -72,6 +74,18 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $student = Student::findOrFail($id);
+
+        // if (Gate::denies('edit_profile', $student)) {
+        //     abort(403);
+        // }
+        // if (! Gate::allows('edit_profile', $student)) {
+        //     abort(403);
+        // }
+
+        if (! Gate::allows('edit_profile', $student)) {
+            abort(403);
+        }
+
         return view('students.edit', compact('student'));
         
     }
@@ -81,8 +95,17 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $student = Student::findOrFail($id);
 
+        // if (Gate::denies('edit_profile', $student)) {
+        //     abort(403);
+        // }
+
+        if (! Gate::allows('edit_profile', $student)) {
+            abort(403);
+        }
+        
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
             'father_name' => ['required', 'string', 'max:100'],

@@ -43,7 +43,7 @@ Route::middleware(['auth.check'])->prefix('student')->controller(StudentControll
     Route::get('/list', 'list')->name('student/list');
     Route::get('/create', 'create')->name('students.create');
     Route::post('/store','store')->name('student/store');
-    Route::get('/edit/{id}', 'edit')->name('student/edit')->middleware('role');
+    Route::get('/edit/{id}', 'edit')->name('student/edit');
     Route::put('/update/{id}','update')->name('student/update');
     Route::get('/delete/{id}', 'destroy')->name('student/destroy');
 });
